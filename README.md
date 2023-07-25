@@ -1,24 +1,56 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## usersテーブル
 
-Things you may want to cover:
+| Column             | Type   | Options                   |
+|--------------------|--------|---------------------------|
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| lastname           | string | null: false               |
+| firstname          | string | null: false               |
+| lastname_furigana  | string | null: false               |
+| firstname_furigana | string | null: false               |
+| birthday           | date   | null: false               |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :orders
 
-* Configuration
 
-* Database creation
+## itemsテーブル
 
-* Database initialization
+| Column        | Type       | Options                        |
+|---------------|------------|--------------------------------|
+| name          | string     | null: false                    |
+| description   | text       | null: false                    |
+| price         | integer    | null: false                    |
+| category      | string     |                                |
+| status        | string     | null: false                    |
+| delivery_cost | string     | null: false                    |
+| sender        | string     | null: false                    |
+| shipping_days | integer    | null: false                    |
+| user          | references | null: false, foreign_key: true |
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+- belongs_to :user
+- has_one :order
 
-* Deployment instructions
 
-* ...
+## ordersテーブル
+
+| Column                | Type   | Options     |
+|-----------------------|--------|-------------|
+| post_code             | string | null: false |
+| shipping_prefecture   | string | null: false |
+| shipping_municipality | string | null: false |
+| shipping_address      | string | null: false |
+| shipping_building     | string |             |
+| buyer_phone_number    | string | null: false |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item

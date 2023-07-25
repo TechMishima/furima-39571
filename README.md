@@ -41,6 +41,19 @@
 
 ## ordersテーブル
 
+| Column | Type | Options |
+|--------|------|---------|
+|        |      |         |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+- has_one :address
+
+
+## addressesテーブル
+
 | Column                | Type   | Options     |
 |-----------------------|--------|-------------|
 | post_code             | string | null: false |
@@ -52,5 +65,4 @@
 
 ### Association
 
-- belongs_to :user
-- belongs_to :item
+- belongs_to :order

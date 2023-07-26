@@ -21,17 +21,17 @@
 
 ## itemsテーブル
 
-| Column        | Type       | Options                        |
-|---------------|------------|--------------------------------|
-| name          | string     | null: false                    |
-| description   | text       | null: false                    |
-| price         | integer    | null: false                    |
-| category      | string     |                                |
-| status        | string     | null: false                    |
-| delivery_cost | string     | null: false                    |
-| sender        | string     | null: false                    |
-| shipping_days | integer    | null: false                    |
-| user          | references | null: false, foreign_key: true |
+| Column           | Type       | Options                        |
+|------------------|------------|--------------------------------|
+| name             | string     | null: false                    |
+| description      | text       | null: false                    |
+| price            | integer    | null: false                    |
+| category_id      | integer    |                                |
+| status_id        | integer    | null: false                    |
+| delivery_cost_id | integer    | null: false                    |
+| prefecture_id    | integer    | null: false                    |
+| shipping_day_id  | integer    | null: false                    |
+| user             | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -41,9 +41,10 @@
 
 ## ordersテーブル
 
-| Column | Type | Options |
-|--------|------|---------|
-|        |      |         |
+| Column | Type       | Options                        |
+|--------|------------|--------------------------------|
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -54,14 +55,15 @@
 
 ## addressesテーブル
 
-| Column                | Type   | Options     |
-|-----------------------|--------|-------------|
-| post_code             | string | null: false |
-| shipping_prefecture   | string | null: false |
-| shipping_municipality | string | null: false |
-| shipping_address      | string | null: false |
-| shipping_building     | string |             |
-| buyer_phone_number    | string | null: false |
+| Column                | Type       | Options                        |
+|-----------------------|------------|--------------------------------|
+| post_code             | string     | null: false                    |
+| prefecture_id         | integer    | null: false                    |
+| shipping_municipality | string     | null: false                    |
+| shipping_address      | string     | null: false                    |
+| shipping_building     | string     |                                |
+| buyer_phone_number    | string     | null: false                    |
+| order                 | references | null: false, foreign_key: true |
 
 ### Association
 

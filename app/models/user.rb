@@ -10,7 +10,7 @@ class User < ApplicationRecord
   validates :lastname_furigana  , presence: true, format: { with: /\A[ァ-ヶ]+\z/}
   validates :firstname_furigana , presence: true, format: { with: /\A[ァ-ヶ]+\z/}
   validates :birthday           , presence: true
-  validates :password , presence: true, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/ }
+  validates :password , presence: true, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i }
 
   has_many :items
   has_many :orders

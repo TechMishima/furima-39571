@@ -7,11 +7,11 @@ class User < ApplicationRecord
   validates :nickname, presence: true
   validates :lastname, presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ }
   validates :firstname, presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ }
-  validates :lastname_furigana, presence: true, format: { with: /\A[ァ-ヶ]+\z/ }
-  validates :firstname_furigana, presence: true, format: { with: /\A[ァ-ヶ]+\z/ }
+  validates :lastname_furigana, presence: true, format: { with: /\A[ァ-ヶー]+\z/ }
+  validates :firstname_furigana, presence: true, format: { with: /\A[ァ-ヶー]+\z/ }
   validates :birthday, presence: true
-  validates :password, presence: true, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
 
-  has_many :items
-  has_many :orders
+  # has_many :items 後に実装
+  # has_many :orders 後に実装
 end

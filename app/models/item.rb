@@ -1,4 +1,6 @@
 class Item < ApplicationRecord
+  has_one_attached :image
+
   validates :name            , presence: true
   validates :description     , presence: true
   validates :price  , presence: true,
@@ -10,6 +12,7 @@ class Item < ApplicationRecord
   validates :prefecture_id   , presence: true
   validates :shipping_day_id , presence: true
   validates :user            , presence: true
+  validates :image           , presence: true
 
   belongs_to :user
 end

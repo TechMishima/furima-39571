@@ -73,12 +73,12 @@ RSpec.describe User, type: :model do
       it 'lastnameに半角カタカナが含むと登録できない' do
         @user.lastname = 'ｱｱｱ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Lastname is invalid")
+        expect(@user.errors.full_messages).to include('Lastname is invalid')
       end
       it 'firstnameに半角カタカナが含むと登録できない' do
         @user.firstname = 'ｱｱｱ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Firstname is invalid")
+        expect(@user.errors.full_messages).to include('Firstname is invalid')
       end
       it 'lastname_furiganaが空では登録できない' do
         @user.lastname_furigana = ''
@@ -93,12 +93,12 @@ RSpec.describe User, type: :model do
       it 'lastname_furiganaに全角ひらがなが含むと登録できない' do
         @user.lastname_furigana = 'あああ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Lastname furigana is invalid")
+        expect(@user.errors.full_messages).to include('Lastname furigana is invalid')
       end
       it 'firstname_furiganaに全角ひらがなが含むと登録できない' do
         @user.firstname_furigana = 'あああ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Firstname furigana is invalid")
+        expect(@user.errors.full_messages).to include('Firstname furigana is invalid')
       end
       it 'birthdayが空では登録できない' do
         @user.birthday = ''

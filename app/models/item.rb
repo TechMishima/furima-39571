@@ -12,15 +12,14 @@ extend ActiveHash::Associations::ActiveRecordExtensions
   validates :delivery_cost_id, presence: true, numericality: { other_than: 1 , message: "can't be blank"}
   validates :prefecture_id   , presence: true, numericality: { other_than: 1 , message: "can't be blank"}
   validates :shipping_day_id , presence: true, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :user            , presence: true
   validates :image           , presence: true
 
   belongs_to :user
 
 # ActiveHashアソシエーション
   belongs_to :category
-  belomgs_to :status
-  belomgs_to :delivery_cost
-  belomgs_to :prefecture
-  belomgs_to :shipping_day
+  belongs_to :status
+  belongs_to :delivery_cost
+  belongs_to :prefecture
+  belongs_to :shipping_day
 end

@@ -1,11 +1,14 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, only: [:new]
 
   def index
   end
 
   def new
-    @item = Item.new
+    if user_signed_in?
+      @item = Item.new
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def create
@@ -24,9 +27,4 @@ class ItemsController < ApplicationController
                                  :shipping_day_id, :price, :image).merge(user_id: current_user.id)
   end
 
-  def move_to_index
-    return if user_signed_in?
-
-    redirect_to action: :index
-  end
 end

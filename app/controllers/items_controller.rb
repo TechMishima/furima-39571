@@ -1,12 +1,12 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
+  before_action :set_tweet, only: [:edit, :show, :update]
 
   def index
     @items = Item.includes(:user).order(created_at: :desc)
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def new
@@ -23,16 +23,14 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
     return if current_user.id == @item.user_id
 
     move_to_index
   end
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
-      redirect_to '/'
+      redirect_to item_path(@item.id)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -47,5 +45,9 @@ class ItemsController < ApplicationController
 
   def move_to_index
     redirect_to action: :index
+  end
+
+  def set_tweet
+    @item = Item.find(params[:id])
   end
 end

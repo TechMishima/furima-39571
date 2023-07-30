@@ -128,8 +128,8 @@
     </div>
     <ul class='item-lists'>
 
-      <% if @item.any? %>
-      <% @item.each do |item| %>
+      <% if @items.any? %>
+      <% @items.each do |item| %>
       <li class='list'>
         <%= link_to "#" do %>
         <div class='item-img-content'>
@@ -147,7 +147,7 @@
             <%= item.name %>
           </h3>
           <div class='item-price'>
-            <span><%= item.price %>円<br><%= DeliveryCost.data[item.delivery_cost_id - 1][:delivery_cost] %></span>
+            <span><%= item.price %>円<br><%= item.delivery_cost.delivery_cost %></span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>

@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.includes(:user).find(params[:id])
   end
 
   def new

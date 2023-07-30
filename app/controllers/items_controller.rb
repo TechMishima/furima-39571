@@ -5,6 +5,9 @@ class ItemsController < ApplicationController
     @items = Item.includes(:user).order(created_at: :desc)
   end
 
+  def show
+  end
+
   def new
     @item = Item.new
   end

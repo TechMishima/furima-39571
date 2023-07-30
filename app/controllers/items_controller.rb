@@ -24,9 +24,9 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    unless current_user.id == @item.user_id
-      move_to_index
-    end
+    return if current_user.id == @item.user_id
+
+    move_to_index
   end
 
   def update

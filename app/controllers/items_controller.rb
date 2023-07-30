@@ -5,6 +5,10 @@ class ItemsController < ApplicationController
     @items = Item.includes(:user).order(created_at: :desc)
   end
 
+  def show
+    @item = Item.find(params[:id])
+  end
+
   def new
     @item = Item.new
   end
@@ -24,5 +28,4 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :description, :category_id, :status_id, :delivery_cost_id, :prefecture_id,
                                  :shipping_day_id, :price, :image).merge(user_id: current_user.id)
   end
-
 end

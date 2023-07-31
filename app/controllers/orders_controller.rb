@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
 
   def index
     @item = Item.find(params[:item_id])
-    # @order_address = DonationAddress.new
+    @order_address = OrderAddress.new
   end
 
   def create

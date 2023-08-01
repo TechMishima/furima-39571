@@ -24,7 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    return if (current_user.id == @item.user_id) || (@order != nil)
+    return if (current_user.id == @item.user_id) || !@order.nil?
 
     move_to_index
   end

@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :destroy]
   before_action :set_item, only: [:edit, :show, :update]
-  before_action :set_order, only: [:index, :show, :edit]
 
   def index
     @items = Item.includes(:user).order(created_at: :desc)
@@ -24,7 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    return if (current_user.id == @item.user_id) || !@order.nil?
+    return unless (current_user.id != @item.user_id) || !@item.order.nil?
 
     move_to_index
   end
@@ -58,9 +57,5 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
-  end
-
-  def set_order
-    @order = Order.find_by(item_id: params[:item_id])
   end
 end

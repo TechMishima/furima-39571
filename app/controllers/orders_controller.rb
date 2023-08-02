@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index]
+  before_action :set_item, only: [:index, :create]
+
   def index
-    @item = Item.find(params[:item_id])
     @order = Order.find_by(item_id: params[:item_id])
     if (current_user.id == @item.user_id) || !@order.nil?
       redirect_to root_path
@@ -12,7 +13,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @order_address = OrderAddress.new(order_params)
     if @order_address.valid?
       pay_item
@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order_address).permit(
-      :user_id, :post_code, :prefecture_id, :shipping_municipality, :shipping_address, :shipping_building, :buyer_phone_number
+      :post_code, :prefecture_id, :shipping_municipality, :shipping_address, :shipping_building, :buyer_phone_number
     )
           .merge(token: params[:token], user_id: current_user.id, item_id: @item.id)
   end
@@ -40,4 +40,9 @@ class OrdersController < ApplicationController
       currency: 'jpy' # 通貨の種類（日本円）
     )
   end
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
 end

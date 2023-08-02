@@ -11,10 +11,6 @@ function price (){
 
     let profitValue = Math.floor(priceValue - taxValue)
     profit.innerHTML = profitValue
-  })
-
-
-
-}
+  })}
 
 window.addEventListener('turbo:load', price)

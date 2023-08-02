@@ -14,7 +14,7 @@ class Item < ApplicationRecord
   validates :image, presence: true
 
   belongs_to :user
-
+  has_one :order
   # ActiveHashアソシエーション
   belongs_to :category
   belongs_to :status

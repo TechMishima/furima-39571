@@ -1,0 +1,33 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        lastname: 名字
+        firstname: 名前
+        lastname_furigana: 名字(フリガナ)
+        firstname_furigana: 名前(フリガナ)
+        birthday: 誕生日
+      item:
+        name: 商品名
+        description: 商品の説明
+        price: 価格
+        image: 画像
+        category_id: カテゴリー
+        status_id: 商品の状態
+        delivery_cost_id: 配送料の負担
+        prefecture_id: 発送元の地域
+        shipping_day_id: 発送までの日数
+    errors:
+      messages:
+        can't_be_blank: を入力してください
+        
+  activemodel:
+    attributes:
+      order_address:
+        post_code: 郵便番号
+        shipping_municipality: 市区町村
+        shipping_address: 番地
+        buyer_phone_number: 電話番号
+        token: カード情報
+        prefecture_id: 都道府県

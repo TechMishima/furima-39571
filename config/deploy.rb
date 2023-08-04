@@ -1,7 +1,7 @@
 lock "~> 3.17.3"
 
 set :application, "furima-39571"
-set :repo_url, "https://github.com/TechMishima/furima-39571.git"
+set :repo_url, "git@github.com:TechMishima/furima-39571.git"
 
 set :branch, 'main'
 
